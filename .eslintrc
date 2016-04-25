@@ -1,0 +1,41 @@
+{
+  "extends" : [
+    "standard"
+  ],
+  "plugins" : [
+
+  ],
+  "env"     : {
+    "es6": true,
+    "browser" : true
+  },
+  "globals" : {
+    "Action"       : false,
+    "__DEV__"      : false,
+    "__PROD__"     : false,
+    "__DEBUG__"    : false,
+    "__DEBUG_NEW_WINDOW__" : false,
+    "__BASENAME__" : false
+  },
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true,
+      "experimentalObjectRestSpread": true,
+      "modules": true,
+    }
+  },
+  "rules": {
+    "semi" : [2, "always"],
+    "space-before-function-paren": [2, "never"],
+    "space-infix-ops": 0,
+    "comma-dangle" : [2, "always-multiline"],
+    "max-len": [2, 120, 2],
+    "keyword-spacing": [2, {"overrides": {
+        "if": {"after": false},
+        "for": {"after": false},
+        "while": {"after": false},
+        "switch": {"after": false},
+        "catch": {"after": false}
+    }}]
+  }
+}
