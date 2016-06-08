@@ -1,10 +1,10 @@
 {
   "name": "fetch-stuff",
-  "version": "0.1.1",
+  "version": "0.2.1",
   "description": "wrapper for the es6 fetch api",
   "main": "src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "babel-tape-runner src/**/*.test.js | tap-diff"
   },
   "keywords": [
     "es6",
@@ -14,10 +14,18 @@
   "author": "Marcel Schulze",
   "license": "MIT",
   "devDependencies": {
+    "babel-tape-runner": "^2.0.1",
     "eslint": "^2.3.0",
     "eslint-config-standard": "^5.1.0",
     "eslint-plugin-promise": "^1.1.0",
     "eslint-plugin-react": "^4.1.0",
-    "eslint-plugin-standard": "^1.3.2"
+    "eslint-plugin-standard": "^1.3.2",
+    "babel-preset-es2015": "^6.6.0",
+    "babel-preset-stage-0": "^6.5.0",
+    "tap-diff": "^0.1.1",
+    "tape": "^4.5.1"
+  },
+  "dependencies": {
+    "invariant": "^2.2.1"
   }
 }
