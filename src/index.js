@@ -1,10 +1,10 @@
-import _partialRight from 'lodash/partialRight';
+import _partialRight from 'lodash.partialright';
 
 export const APIManager = function({
     baseUrl,
     headers = {
       'Accept': 'application/json',
-      'Content-Type': 'application/json',
+      'Content-Type': 'application/json; charset=utf-8',
       'Origin': '*',
     },
     requestInterceptor = (args) => args,
