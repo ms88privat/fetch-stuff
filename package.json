@@ -1,6 +1,6 @@
 {
   "name": "fetch-stuff",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "wrapper for the es6 fetch api",
   "main": "src/index.js",
   "scripts": {
@@ -27,6 +27,6 @@
   },
   "dependencies": {
     "invariant": "^2.2.1",
-    "lodash.partialright": "*",
+    "lodash.partialright": "*"
   }
 }
