@@ -48,10 +48,10 @@ export const APIManager = function({
       headers,
       requestInterceptor,
       responseInterceptor,
-      responseHandlerGet,
-      responseHandlerPost,
-      responseHandlerDelete,
-      responseHandlerPut,
+      responseHandlerGet = (resp) => resp,
+      responseHandlerPost = (resp) => resp,
+      responseHandlerDelete = (resp) => resp,
+      responseHandlerPut = (resp) => resp,
     } = {}) {
       const p = _parseUrl(url || baseUrl + uri);
 
@@ -125,7 +125,7 @@ export const APIManager = function({
       ;
     }
     post({
-      url = this._config.urlL,
+      url = this._config.url,
       headers = this._config.headers,
       requestInterceptor = this._config.requestInterceptor,
       responseInterceptor = this._config.responseInterceptor,
@@ -149,7 +149,7 @@ export const APIManager = function({
     }
 
     put({
-      url = this._config.urlL,
+      url = this._config.url,
       headers = this._config.headers,
       requestInterceptor = this._config.requestInterceptor,
       responseInterceptor = this._config.responseInterceptor,
@@ -173,7 +173,7 @@ export const APIManager = function({
     }
 
     delete({
-      url = this._config.urlL,
+      url = this._config.url,
       headers = this._config.headers,
       requestInterceptor = this._config.requestInterceptor,
       responseInterceptor = this._config.responseInterceptor,
@@ -213,12 +213,20 @@ export function checkStatus(resp) {
   // TODO: if debugRow: true -> log
   // console.log('checkStatus', resp);
   if(resp.ok) {
-    return _parseJSON(resp);
+    return _parseJSON(resp).catch(catchError);
   } else {
     return _parseJSON(resp).then((err) => {
+      // console.log('_parseJSON', err);
+      return Promise.reject({error: err, resp: resp});
+    }, function(err) {
       return Promise.reject({error: err, resp: resp});
     });
   }
+}
+
+function catchError(err) {
+  // console.log('catchError', catchError);
+  return Promise.reject({error: err});
 }
 
 function _parseJSON(response) {
